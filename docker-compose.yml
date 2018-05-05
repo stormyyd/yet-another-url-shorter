@@ -2,7 +2,7 @@ version: '3'
 services:
 
   api_server:
-    image: "stormyyd/url-shorter_api_server"
+    image: "stormyyd/yet-another-url-shorter_api_server"
     depends_on:
       - mongo
     links:
@@ -16,7 +16,7 @@ services:
       - /data/db:/data/db
 
   frontend:
-    build: "stormyyd/url-shorter_frontend"
+    build: "stormyyd/yet-another-url-shorter_frontend"
     links:
       - api_server
     ports:
