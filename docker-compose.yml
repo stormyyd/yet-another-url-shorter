@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  api_server:
+    image: "stormyyd/url-shorter_api_server"
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    ports:
+      - "19650:8080"
+
+  mongo:
+    image: "mongo:3.7-jessie"
+    volumes:
+      - /data/db:/data/db
+
+  frontend:
+    build: "stormyyd/url-shorter_frontend"
+    links:
+      - api_server
+    ports:
+      - "19651:80"
